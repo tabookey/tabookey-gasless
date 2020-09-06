@@ -1,0 +1,1 @@
+npx run-with-testrpc --hardfork 'istanbul' --gasLimit 10000000 'gsn start'

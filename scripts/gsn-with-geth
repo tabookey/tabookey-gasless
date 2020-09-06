@@ -1,0 +1,2 @@
+npx run-with-testrpc --testrpc-cmd ./node_modules/\@opengsn/gsn/scripts/geth-local 'npx gsn start'
+
