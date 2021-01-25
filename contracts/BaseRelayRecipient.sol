@@ -47,19 +47,8 @@ abstract contract BaseRelayRecipient is IRelayRecipient {
      * signing or hashing the
      */
     function _msgData() internal override virtual view returns (bytes memory ret) {
-        if (msg.data.length >= 24 && isTrustedForwarder(msg.sender)) {
-            // At this point we know that the sender is a trusted forwarder,
-            // we copy the msg.data , except the last 20 bytes (and update the total length)
-            assembly {
-                let ptr := mload(0x40)
-                // copy only size-20 bytes
-                let size := sub(calldatasize(),20)
-                // structure RLP data as <offset> <length> <bytes>
-                mstore(ptr, 0x20)
-                mstore(add(ptr,32), size)
-                calldatacopy(add(ptr,64), 0, size)
-                return(ptr, add(size,64))
-            }
+        if (msg.data.length >= 20 && isTrustedForwarder(msg.sender)) {
+            return msg.data[0:msg.data.length-20];
         } else {
             return msg.data;
         }

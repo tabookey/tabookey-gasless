@@ -14,12 +14,12 @@ contract TestForwarderTarget is BaseRelayRecipient {
     // solhint-disable-next-line no-empty-blocks
     receive() external payable {}
 
-    event TestForwarderMessage(string message, address realSender, address msgSender, address origin);
+    event TestForwarderMessage(string message, bytes realMsgData, address realSender, address msgSender, address origin);
 
     function emitMessage(string memory message) public {
 
         // solhint-disable-next-line avoid-tx-origin
-        emit TestForwarderMessage(message, _msgSender(), msg.sender, tx.origin);
+        emit TestForwarderMessage(message, _msgData(), _msgSender(), msg.sender, tx.origin);
     }
 
     function publicMsgSender() public view returns (address) {
