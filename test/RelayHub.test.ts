@@ -554,7 +554,7 @@ contract('RelayHub', function ([_, relayOwner, relayManager, relayWorker, sender
               gasPrice,
               gas
             }),
-            'no gas for innerRelayCall')
+            'Not enough gas left for innerRelayCall to complete')
         })
 
         it('should not accept relay requests with gas price lower then user specified', async function () {

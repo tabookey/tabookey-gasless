@@ -651,10 +651,14 @@
 "@openzeppelin/contracts@^3.3.0-solc-0.7":
   version "3.3.0"
 <<<<<<< HEAD
+<<<<<<< HEAD
   resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-3.3.0.tgz#ffdb693c5c349fc33bba420248dd3ac0a2d7c408"
 =======
   resolved "http://localhost:4873/@openzeppelin%2fcontracts/-/contracts-3.3.0.tgz#ffdb693c5c349fc33bba420248dd3ac0a2d7c408"
 >>>>>>> upgrade contracts to use solidity 0.7
+=======
+  resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-3.3.0.tgz#ffdb693c5c349fc33bba420248dd3ac0a2d7c408"
+>>>>>>> updated solhint
   integrity sha512-AemZEsQYtUp1WRkcmZm1div5ORfTpLquLaziCIrSagjxyKdmObxuaY1yjQ5SHFMctR8rLwp706NXTbiIRJg7pw==
 
 "@openzeppelin/test-helpers@0.5.5":
