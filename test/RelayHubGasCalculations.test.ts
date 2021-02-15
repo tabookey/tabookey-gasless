@@ -209,7 +209,7 @@ contract('RelayHub gas calculations', function ([_, relayOwner, relayWorker, rel
       await misbehavingPaymaster.setTrustedForwarder(forwarder)
       await misbehavingPaymaster.setRelayHub(relayHub.address)
       await misbehavingPaymaster.deposit({ value: ether('0.1') })
-      await misbehavingPaymaster.setOverspendAcceptGas(true)
+      await misbehavingPaymaster.setOutOfGasPre(true)
 
       const senderNonce = (await forwarderInstance.getNonce(senderAddress)).toString()
       const relayRequestMisbehaving = cloneRelayRequest(relayRequest)

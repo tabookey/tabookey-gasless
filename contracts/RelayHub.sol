@@ -233,8 +233,8 @@ contract RelayHub is IRelayHub {
         vars.dataGasCost = calldataGasCost(msg.data.length);
         if (!vars.success) {
             //Failure cases where the PM doesn't pay
-            if ( (vars.innerGasUsed <= vars.gasAndDataLimits.acceptanceBudget.add(vars.dataGasCost) ) && (
-                    vars.status == RelayCallStatus.RejectedByPreRelayed ||
+            if (vars.status == RelayCallStatus.RejectedByPreRelayed ||
+                    (vars.innerGasUsed <= vars.gasAndDataLimits.acceptanceBudget.add(vars.dataGasCost)) && (
                     vars.status == RelayCallStatus.RejectedByForwarder ||
                     vars.status == RelayCallStatus.RejectedByRecipientRevert  //can only be thrown if rejectOnRecipientRevert==true
             )) {
