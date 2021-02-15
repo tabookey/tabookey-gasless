@@ -22,7 +22,7 @@ import "./interfaces/IStakeManager.sol";
 contract RelayHub is IRelayHub {
     using SafeMath for uint256;
 
-    string public override versionHub = "2.0.0+opengsn.hub.irelayhub";
+    string public override versionHub = "2.2.0-rc.1+opengsn.hub.irelayhub";
 
     uint256 public immutable override minimumStake;
     uint256 public immutable override minimumUnstakeDelay;
