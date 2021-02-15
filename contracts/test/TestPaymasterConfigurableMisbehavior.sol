@@ -11,6 +11,7 @@ contract TestPaymasterConfigurableMisbehavior is TestPaymasterEverythingAccepted
     bool public returnInvalidErrorCode;
     bool public revertPostRelayCall;
     bool public overspendAcceptGas;
+    bool public expensiveAcceptGas;
     bool public revertPreRelayCall;
     bool public revertPreRelayCallOnEvenBlocks;
     bool public greedyAcceptanceBudget;
@@ -36,6 +37,10 @@ contract TestPaymasterConfigurableMisbehavior is TestPaymasterEverythingAccepted
     }
     function setOverspendAcceptGas(bool val) public {
         overspendAcceptGas = val;
+    }
+
+    function setExpensiveAcceptGas(bool val) public {
+        expensiveAcceptGas = val;
     }
 
     function setGreedyAcceptanceBudget(bool val) public {
@@ -65,7 +70,15 @@ contract TestPaymasterConfigurableMisbehavior is TestPaymasterEverythingAccepted
             }
         }
 
-        require(!returnInvalidErrorCode, "invalid code");
+        if (expensiveAcceptGas) {
+            uint sum;
+            //memory access is 700gas, so we waste ~50000
+            for ( int i=0; i<60000; i+=700 ) {
+                sum  = sum + limits.acceptanceBudget;
+            }
+        }
+
+    require(!returnInvalidErrorCode, "invalid code");
 
         if (withdrawDuringPreRelayedCall) {
             withdrawAllBalance();
@@ -135,6 +148,15 @@ contract TestPaymasterConfigurableMisbehavior is TestPaymasterEverythingAccepted
             preRelayedCallGasLimit,
             postRelayedCallGasLimit,
             limits.calldataSizeLimit
+        );
+    }
+
+    function setGasLimits(uint acceptanceBudget, uint preRelayedCallGasLimit, uint postRelayedCallGasLimit, uint calldataSizeLimit) public {
+        limits = IPaymaster.GasAndDataLimits(
+            acceptanceBudget,
+            preRelayedCallGasLimit,
+            postRelayedCallGasLimit,
+            calldataSizeLimit
         );
     }
 

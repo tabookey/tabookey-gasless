@@ -34,6 +34,12 @@ contract TestUtil {
         GsnEip712Library.verify(relayRequest, signature);
     }
 
+    function forwarderExecuteNoRevert(GsnTypes.RelayRequest calldata relayRequest,bytes calldata signature)
+        external returns(bool success, bool forwarderSuccess, bytes memory ret) {
+
+        (forwarderSuccess, success, ret) = GsnEip712Library.execute(relayRequest, signature);
+    }
+
     function callForwarderVerifyAndCall(
         GsnTypes.RelayRequest calldata relayRequest,
         bytes calldata signature
