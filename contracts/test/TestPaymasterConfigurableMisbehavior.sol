@@ -142,21 +142,12 @@ contract TestPaymasterConfigurableMisbehavior is TestPaymasterEverythingAccepted
 
     bool private trustRecipientRevert;
 
-    function setGasLimits(uint acceptanceBudget, uint preRelayedCallGasLimit, uint postRelayedCallGasLimit) public {
-        limits = IPaymaster.GasAndDataLimits(
-            acceptanceBudget,
-            preRelayedCallGasLimit,
-            postRelayedCallGasLimit,
-            limits.calldataSizeLimit
-        );
-    }
-
     function setGasLimits(uint acceptanceBudget, uint preRelayedCallGasLimit, uint postRelayedCallGasLimit, uint calldataSizeLimit) public {
         limits = IPaymaster.GasAndDataLimits(
             acceptanceBudget,
             preRelayedCallGasLimit,
             postRelayedCallGasLimit,
-            calldataSizeLimit
+            calldataSizeLimit ==0 ? limits.calldataSizeLimit : calldataSizeLimit
         );
     }
 

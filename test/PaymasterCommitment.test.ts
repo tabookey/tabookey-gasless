@@ -380,7 +380,7 @@ contract('Paymaster Commitment', function ([_, relayOwner, relayManager, relayWo
     it('paymaster SHOULD pay for Forwarder revert ABOVE commitment', async () => {
       // instead of creating a custom forwarder with takes a lot of gas, we lower
       // the commitment, so normal paymaster will be above it.
-      await paymasterContract.setGasLimits(10000, 50000, 10000)
+      await paymasterContract.setGasLimits(10000, 50000, 10000, 0)
 
       // NOTE: as long as commitment > preRelayedCallGasLimit
       const r = await makeRequest(web3, {
@@ -424,7 +424,7 @@ contract('Paymaster Commitment', function ([_, relayOwner, relayManager, relayWo
     })
 
     it('paymaster SHOULD pay for trusted-recipient revert (above commitment)', async () => {
-      await paymasterContract.setGasLimits(10000, 50000, 10000)
+      await paymasterContract.setGasLimits(10000, 50000, 10000, 0)
 
       await paymasterContract.setTrustRecipientRevert(true)
       const r = await makeRequest(web3, {
