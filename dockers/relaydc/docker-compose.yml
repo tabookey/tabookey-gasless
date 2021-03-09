@@ -32,7 +32,7 @@ services:
 #### make sure to add instance name to the router command above
 
   gsn1:
-    image: opengsn/jsrelay:2.1.0
+    image: opengsn/jsrelay:2.2.0
     restart: on-failure
 
     # $ROOT - mapped by calling script to data folder

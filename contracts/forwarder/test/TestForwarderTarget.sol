@@ -5,7 +5,7 @@ import "../../BaseRelayRecipient.sol";
 
 contract TestForwarderTarget is BaseRelayRecipient {
 
-    string public override versionRecipient = "2.0.0+opengsn.test.recipient";
+    string public override versionRecipient = "2.2.0+opengsn.test.recipient";
 
     constructor(address forwarder) {
         trustedForwarder = forwarder;

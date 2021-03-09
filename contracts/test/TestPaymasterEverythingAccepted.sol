@@ -8,7 +8,7 @@ import "../BasePaymaster.sol";
 contract TestPaymasterEverythingAccepted is BasePaymaster {
 
     function versionPaymaster() external view override virtual returns (string memory){
-        return "2.0.0+opengsn.test-pea.ipaymaster";
+        return "2.2.0+opengsn.test-pea.ipaymaster";
     }
 
     event SampleRecipientPreCall();

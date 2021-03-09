@@ -6,7 +6,7 @@ import "./TestPaymasterEverythingAccepted.sol";
 
 contract TestPaymasterVariableGasLimits is TestPaymasterEverythingAccepted {
 
-    string public override versionPaymaster = "2.0.0+opengsn.test-vgl.ipaymaster";
+    string public override versionPaymaster = "2.2.0+opengsn.test-vgl.ipaymaster";
 
     event SampleRecipientPreCallWithValues(
         uint256 gasleft,

@@ -8,7 +8,7 @@ import "./TestPaymasterConfigurableMisbehavior.sol";
 
 contract TestRecipient is BaseRelayRecipient {
 
-    string public override versionRecipient = "2.0.0+opengsn.test.irelayrecipient";
+    string public override versionRecipient = "2.2.0+opengsn.test.irelayrecipient";
 
     constructor(address forwarder) {
         setTrustedForwarder(forwarder);
